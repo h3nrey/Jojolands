@@ -1,29 +1,123 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: "system-ui";
   color: rgb(99, 61, 89);
+  font-family: 'Space Mono', monospace;
+  text-decoration: none;
+  border: 0;
+}
+
+:root{
+  --bg: #2B1137;
+  --green: #73AE04;
+  --pink: #FB0873;
+  --lightPink: FF63A8;
+  --text: #DDDDDD;
 }
 
 body{
-  background-color: #202020;
+  background-color: var(--bg);
 }
 .app{
   padding: 2rem;
 }
 
+
+
+/* --------- HEADER -----------  */
+
 header{
   display: flex;
   justify-content: space-between;
+  margin-bottom: 4rem;
+  align-items: center;  
 }
 
-header.title{
-  font-size: 1rem;
+.logo__wrapper{
+  position: relative;
+  display: flex;
 }
 
-.navigation{
+.logo__wrapper .logo__text{
+  font-size: 4.5rem;
+  font-style: italic;
+  color: var(--pink);
+  text-shadow: 4px 4px 0 var(--bg);
+}
+
+.logo__wrapper .logo__img{
+  position: absolute;
+  width: 160%;
+  height: 160%;
+  z-index: -1;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
+nav{
   display: flex;
   gap: 2rem;
+  
+}
+
+.auth__container{
+  display: flex; gap: 2rem;
+}
+
+.auth__container .link{
+  font-size: 1.5rem;
+  color: var(--pink );
+  position: relative;
+}
+
+.auth__container .link::after{
+  content: "";
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  background-color: var(--green);
+  transition: all 300ms;
+}
+
+nav .link:hover::after{
+  transform: scaleX(100%);
+}
+
+.logged__container{
+  display: flex;
+  gap: 2rem;
+  font-size: 1.5rem;
+  align-items: center;
+  color: var(--pink );
+}
+
+.logged__container  h3{
+  font-size: 1.5rem;
+  color: var(--pink );
+}
+
+.logged__container button{
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1.5rem;
+  height: fit-content ;
+  background-color: transparent;
+  color: var(--pink);
+  cursor: pointer;
+  transition: all 400ms;
+}
+
+.logged__container button:hover{
+  background-color: #FB0873;
+  color: var(--text);
 }
 
 form{

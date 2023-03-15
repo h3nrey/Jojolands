@@ -5,9 +5,10 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
+import Header from './components/Header';
 
 interface User {
-  name: String,
+  name: string,
   email: String,
 }
 
@@ -68,7 +69,7 @@ function App() {
     setStands(response.data);
   }
 
-  const HandleLogout = async() => {
+  const HandleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
   }
@@ -103,7 +104,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <header>
+        {/* <header>
           <Link to="/">
             <h2 id='title'>JOJOLAND</h2>
 
@@ -121,7 +122,9 @@ function App() {
             </button>
           </div>
 
-        </header>
+        </header> */}
+
+        <Header HandleLogout={HandleLogout} name={user?.name} />
 
         <Routes>
           <Route path="/" element={<Home stands={stands} />}/>
