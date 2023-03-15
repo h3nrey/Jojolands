@@ -23,33 +23,63 @@ function Register({setRegisterProps}: RegisterProps){
     }
   }
   return(
-    <form onSubmit={HandleSubmit}>
-      <input 
-        type="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="nickname"
-      />
-      <input 
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="email"
-      />
-      <input 
-        type="text"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="password"
-      />
-      <input 
-        type="text"
-        value={password2}
-        onChange={(e) => setPassword2(e.target.value)}
-        placeholder="confirm password"
-      />
-      <button type="submit">Submit</button>
-    </form>
+    <section className="form__container">
+      <h2 className="form__legend">Register</h2>
+
+      <form onSubmit={HandleSubmit} id="register__form">
+        <fieldset>
+          <div className="input__container">
+            <label htmlFor="name">Nickname</label>
+            <input 
+              type="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="nickname"
+              className="register__input"
+              id="name"
+            />
+          </div>
+          
+          <div className="input__container">
+            <label htmlFor="email">Email</label>
+            <input 
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="email"
+              className="register__input"
+            />
+          </div>
+        </fieldset>
+        
+        <fieldset>
+          <div className="input__container">
+           <label htmlFor="password">Password</label>
+            <input 
+              type="text"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="password"
+              className="register__input"
+            />
+          </div>
+          
+          <div className="input__container">
+            <label htmlFor="password2">Confirm password</label>
+            <input 
+              type="text"
+              value={password2}
+              onChange={(e) => setPassword2(e.target.value)}
+              placeholder="confirm password"
+              className="register__input"
+            />
+          </div>
+        </fieldset>
+        
+        <button type="submit" className="submit">SUBMIT</button>
+      </form>
+    </section>
+    
   )
 }
 

@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import axios from "axios";
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Header from './components/Header';
+
 
 interface User {
   name: string,
@@ -21,6 +22,8 @@ export interface Stand {
 }
 
 function App() {
+  const navigate = useNavigate(); 
+
   // Login
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -82,6 +85,7 @@ function App() {
       setUser(response.data);
 
       localStorage.setItem("token", token);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -96,43 +100,25 @@ function App() {
 
 
       localStorage.setItem("token", token);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   }
 
   return (
-    <Router>
-      <div className="app">
-        {/* <header>
-          <Link to="/">
-            <h2 id='title'>JOJOLAND</h2>
+    <div className="app">
+      <Header HandleLogout={HandleLogout} name={user?.name} />
 
-          </Link>
-
-          <p>{user?.name}</p>
-
-          <div className='navigation'>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-            <button 
-              onClick={HandleLogout}
-            >
-              sair
-            </button>
-          </div>
-
-        </header> */}
-
-        <Header HandleLogout={HandleLogout} name={user?.name} />
-
+      <main>
         <Routes>
           <Route path="/" element={<Home stands={stands} />}/>
           <Route path="/login" element={<Login setLoginData={HandleLogin} />}/>
           <Route path="/register" element={<Register setRegisterProps={HandleRegister} />}/>
         </Routes>
-     </div>
-    </Router>
+      </main>
+      
+    </div>
     
   )
 }
