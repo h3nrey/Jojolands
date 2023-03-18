@@ -6,9 +6,10 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Header from './components/Header';
+import Create from './pages/Create';
 
 
-interface User {
+export interface User {
   name: string,
   email: String,
 }
@@ -106,15 +107,32 @@ function App() {
     }
   }
 
+  const HandleCreateStand = async(standData: {}) => {
+    const url = "http://localhost:5000/api/stands";
+    const config= {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    }
+
+    try {
+      await axios.post(url, standData, config);
+      // await navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="app">
       <Header HandleLogout={HandleLogout} name={user?.name} />
 
       <main>
         <Routes>
-          <Route path="/" element={<Home stands={stands} />}/>
+          <Route path="/" element={<Home stands={stands} user={user}/>}/>
           <Route path="/login" element={<Login setLoginData={HandleLogin} />}/>
           <Route path="/register" element={<Register setRegisterProps={HandleRegister} />}/>
+          <Route path="/createjojo" element={<Create setStandProps={HandleCreateStand} />}/>
         </Routes>
       </main>
       

@@ -153,6 +153,10 @@ fieldset{
   gap: 4rem;
 }
 
+fieldset.stats__fieldset {
+  gap: 2rem;
+}
+
 .input__container{
   display: flex;
   flex-direction: column;
@@ -176,6 +180,10 @@ input{
   width: 20rem;
 }
 
+.stats__input{
+  width: 10rem;
+}
+
 input:focus{
   outline: 5px solid var(--lightPink);
 }
@@ -196,4 +204,104 @@ button.submit{
 
 button.submit:hover{
   outline: 5px solid var(--lightGreen);
+}
+
+
+/*-------- Home ---------*/
+
+.section__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+.section__title{
+  color: var(--pink);
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 100%;
+}
+
+#section__button{
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  cursor: pointer;
+  background-color: var(--pink);
+  transition: 200ms;
+}
+
+#section__button:hover{
+  outline: 5px solid var(--text);
+}
+
+#section__button svg{
+  color: var(--text);
+  font-size: 2rem; 
+  stroke: var(--text);
+  stroke-width: 4;
+
+}
+
+ul{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stand__container{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.stand__content{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.stand__icon{
+  width: 3rem;
+  height: 3rem;
+  transform: rotate(90deg);
+}
+
+.stand__name{
+  font-size: 2rem;
+  color: var(--pink);
+}
+
+.stand__standmaster{
+  font-size: 1.5rem;
+  color: var(--lightPink);
+}
+
+.stand__stats{
+  display: flex;
+}
+
+.stand__stats .stat{
+  padding: 0.5rem 2rem;
+  background-color: var(--green);
+  color: #2B1137;
+  border-radius: 0 0 1.5rem 1.5rem;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat.start{
+  border-radius: 0.25rem 0 1.5rem 1.5rem;
+}
+
+.stat.end{
+  border-radius: 0 0.25rem 1.5rem 1.5rem;
+}
+
+.stat p {
+  color: var(--text);
+  font-size: 1.5rem;
 }
